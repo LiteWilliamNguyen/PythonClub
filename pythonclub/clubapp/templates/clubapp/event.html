@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Meetings</h2>
+<table class="table">
+<tr>
+    <th>Event Name</th>
+    <th>Event Description</th>
+</tr>
+{% for e in event_list %}
+<tr>
+    <td>{{e.eventtitle}}</td>
+    <td>{{e.eventlocation}}</td>
+    <td>{{e.eventdate}}</td>
+    <td>{{e.eventtime}}</td>
+    <td>{{e.eventdescription}}</td>
+    <td>{{e.userid}}</td>
+
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

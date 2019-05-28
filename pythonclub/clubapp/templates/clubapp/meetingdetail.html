@@ -1,0 +1,19 @@
+{$ extends 'base.html' $}
+{% block content %}
+<h2>{{ meet.meetingtitle }}</h2>
+<td>{{meet.meetingdate}}</td>
+<td>{{meet.meetingtime}}</td>
+<td>{{meet.meetinglocation}}</td>
+<td>{{meet.meetingAgenda}}</td>
+<p>Number of Resources : {{ resourcecount }}</p>
+<h3>Event</h3>
+{% for e in events %}
+<h4>{{ event.eventtitle }}</h4>
+<td>{{e.eventlocation}}</td>
+<td>{{e.eventdate}}</td>
+<td>{{e.eventtime}}</td>
+<td>{{e.eventdescription}}</td>
+<td>{{e.userid}}</td>
+{% endfor %}
+
+{% endblock %}
