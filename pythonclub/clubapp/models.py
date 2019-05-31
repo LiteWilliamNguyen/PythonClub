@@ -41,7 +41,7 @@ class Resource(models.Model):
         return self. resourcename
     
     class Meta:
-        db_table = 'resoure'
+        db_table = 'resource'
  
 
 class Event(models.Model):
