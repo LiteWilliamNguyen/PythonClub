@@ -9,15 +9,15 @@ def index (request):
 
 def getMeetings(request):
     meetings_list=Meetings.objects.all()
-    context={'meetings_list' : types_list}
-    return render(request,'clubapp/types.html', context=context)
+    context={'meetings_list' : meetings_list}
+    return render(request,'clubapp/meeting.html', context=context)
 
 def getResource(request):
-    resouce_list=Resource.objects.all()
-    return render(request, 'clubapp/resource.html',{'resource_list' : resource_list})
+    resource_list=Resource.objects.all()
+    return render(request, 'clubapp/resource.html', {'resource_list' : resource_list})
 
 def getEvent(request):
-    event_list=Event.object.all()
+    event_list=Event.objects.all()
     return render(request, 'clubapp/event.html', {'event_list' : event_list})
 
 def meetingdetail(request, id):
@@ -34,26 +34,38 @@ def meetingdetail(request, id):
     }
     return render (request, 'pythonclub/meetingdetail.html', context = context)
 
-def newProduct(request):
-    form=ProductForm
+def newMeeting(request):
+    form=MeetingsForm
     if request.method =='POST':
-        form=ProductForm(request.POST)
+        form=MeetingsForm(request.POST)
         if form.is_valid():
             post=form.save(commit=True)
             post.save()
-            form=ProductForm()
+            form=MeetingsForm()
     else:
-        form=ProductForm()
-    return render(request, 'TechReviewApp/newproduct.html', {'form': form})
+        form=MeetingsForm()
+    return render(request, 'clubapp/newmeeting.html', {'form': form})
 
-def newReview(request):
-    form=ReviewForm
+def newEvent(request):
+    form=EventForm
     if request.method =='POST':
-        form=ReviewForm(request.POST)
+        form=EventForm(request.POST)
         if form.is_valid():
             post=form.save(commit=True)
             post.save()
-            form=ReviewForm()
+            form=EventForm()
     else:
-        form=ReviewForm()
-    return render(request, 'TechReviewApp/newreview.html', {'form': form})
+        form=EventForm()
+    return render(request, 'clubapp/newevent.html', {'form': form})
+
+def newResource(request):
+    form=ResourceForm
+    if request.method =='POST':
+        form=ResourceForm(request.POST)
+        if form.is_valid():
+            post=form.save(commit=True)
+            post.save()
+            form=ResourceForm()
+    else:
+        form=ResourceForm()
+    return render(request, 'clubapp/newresource.html', {'form': form})
